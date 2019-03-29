@@ -1,0 +1,26 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8766
+spring:
+  application:
+    name: spring-zuul
+zuul:
+  routes:
+    api-a:
+      path: /api/**
+      serviceId: spring-feign
+    api-b:
+      path: /api-b/**
+      serviceId: eureka-client2
+      
+#1访问的时候先访问网关，再由网关进行转发     ，只要引入了 zuul，它就会自动帮我们实现反向代理和负载均衡。
+#当一个服务启动多个端口时，zuul 服务网关会依次请求不同端口，以达到负载均衡的目的。
+#配置文件中的地址转发其实就是一个反向代理 
+#2指定服务注册中心的地址为http://localhost:8761/eureka/，服务的端口为8765，
+#服务名为service-zuul；以/api-a/ 开头的请求都转发给service-ribbon服务；
+#以/api-b/开头的请求都转发给service-feign服务,
+#3服务网关还有个作用就是接口的安全性校验，这个时候我们就需要通过 zuul 
+#进行统一拦截，zuul 通过继承过滤器 ZuulFilter 进行处理，
