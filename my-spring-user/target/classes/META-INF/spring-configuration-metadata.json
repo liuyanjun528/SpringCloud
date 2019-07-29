@@ -1,0 +1,47 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.example.demo.config.DBConfig1",
+      "name": "mysql.datasource.test1",
+      "type": "com.example.demo.config.DBConfig1"
+    },
+    {
+      "sourceType": "com.example.demo.config.DBConfig2",
+      "name": "mysql.datasource.test2",
+      "type": "com.example.demo.config.DBConfig2"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.example.demo.config.DBConfig1",
+      "name": "mysql.datasource.test1.password",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.example.demo.config.DBConfig1",
+      "name": "mysql.datasource.test1.url",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.example.demo.config.DBConfig1",
+      "name": "mysql.datasource.test1.username",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.example.demo.config.DBConfig2",
+      "name": "mysql.datasource.test2.password",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.example.demo.config.DBConfig2",
+      "name": "mysql.datasource.test2.url",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.example.demo.config.DBConfig2",
+      "name": "mysql.datasource.test2.username",
+      "type": "java.lang.String"
+    }
+  ]
+}

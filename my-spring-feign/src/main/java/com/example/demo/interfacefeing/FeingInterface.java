@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author 95303 定义一个feign接口，通过@ FeignClient（“服务名”），来指定调用哪个服务。
  *         比如在代码中调用了service-hi服务的“/hi”接口
  */
-// 定义一个接口，注解指明要调用的服务，下面在写上要调用这个服务具体的接口
-// 下面接口必须对应调用服务的接口，不能乱写
+// 定义一个接口，注解指明要调用的服务，下面在写上要调用这个服务具体的方法
+// 会根据getmapping的url进行查找，不过返回值和参数列表必须一样，否则对应不上会报错，
+//所以说把方法复制过来最好
 // feign自带断路器，只需指定一个熔断处理类即可，并实现FeingInterface接口，重写方法进行熔断处理的具体操作，
 // xml文件中开启熔断feign.hystrix.enabled=true
 // ,fallback = SchedualServiceHiHystric.class
 
-@FeignClient(value = "spring-tiger", fallback = FeignHystrix.class)
+@FeignClient(value = "spring-tiger")
 public interface FeingInterface {
 	// 服务名spring-tiger+"/hi"
 	@GetMapping("/hi")

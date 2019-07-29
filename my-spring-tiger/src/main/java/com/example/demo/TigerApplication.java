@@ -8,9 +8,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
+import com.codingapi.txlcn.tc.config.EnableDistributedTransaction;
+
+
+
 @EnableEurekaClient
 @SpringBootApplication
-
+@EnableDistributedTransaction
 public class TigerApplication {
 
 	public static void main(String[] args) {

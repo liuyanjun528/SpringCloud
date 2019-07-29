@@ -7,7 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>java:com.example.demo.RurekaServerApplication</config>
+		<config>java:com.springboot.demo.RurekaServerApplication</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

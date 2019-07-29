@@ -36,7 +36,7 @@ public class ApiFilter extends ZuulFilter{
 	@Override
 	public boolean shouldFilter() {
 		
-		return true;
+		return false;
 	}
 //filterOrdery 为过滤的顺序，如果有多个过滤器，则数字越小越先执行
 	@Override

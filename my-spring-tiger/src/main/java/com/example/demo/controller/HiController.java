@@ -7,12 +7,12 @@ import com.example.demo.service.HiService;
 
 @RestController
 public class HiController {
-@Autowired HiService hiService;
+	@Autowired 
+	HiService hiService;
 
 	@GetMapping("/hi")
     public String hi1(){
     	//Thread.sleep(3000);
-		System.out.println("被调用");
     	return hiService.car();
     }
     

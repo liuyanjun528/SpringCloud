@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CodMapper">
+  
+  <resultMap id="BaseResultMap" type="com.example.demo.enty.Cod">
+    <id column="codeid" jdbcType="INTEGER" property="codeid" />
+    <result column="codename" jdbcType="VARCHAR" property="codename" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    codeid, codename
+  </sql>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cod
+    where codeid = #{codeid,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cod
+    where codeid = #{codeid,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.example.demo.enty.Cod">
+    insert into cod (codeid, codename)
+    values (#{codeid,jdbcType=INTEGER}, #{codename,jdbcType=VARCHAR})
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.example.demo.enty.Cod">
+    insert into cod
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="codeid != null">
+        codeid,
+      </if>
+      <if test="codename != null">
+        codename,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="codeid != null">
+        #{codeid,jdbcType=INTEGER},
+      </if>
+      <if test="codename != null">
+        #{codename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.enty.Cod">
+    update cod
+    <set>
+      <if test="codename != null">
+        codename = #{codename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where codeid = #{codeid,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.enty.Cod">
+    update cod
+    set codename = #{codename,jdbcType=VARCHAR}
+    where codeid = #{codeid,jdbcType=INTEGER}
+  </update>
+  
+  <select id="count" resultType="java.lang.Integer">
+    SELECT COUNT(1) FROM cod WHERE 1=1 
+    <if test="entity.codeid != null and entity.codeid != ''">
+       AND codeid = #{entity.codeid,jdbcType=INTEGER}
+    </if>
+    <if test="entity.codename != null and entity.codename != ''">
+       AND codename = #{entity.codename,jdbcType=VARCHAR}
+    </if>
+  </select>
+  
+  <select id="page" resultMap="BaseResultMap">
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM cod WHERE 1=1 
+    <if test="entity.codeid != null and entity.codeid != ''">
+       AND codeid = #{entity.codeid,jdbcType=INTEGER}
+    </if>
+    <if test="entity.codename != null and entity.codename != ''">
+       AND codename = #{entity.codename,jdbcType=VARCHAR}
+    </if>
+    <if test="paging !=null and paging.offset >= 0 and paging.pageSize > 0">
+       limit ${paging.offset}, ${paging.pageSize} 
+    </if>
+  </select>
+</mapper>
